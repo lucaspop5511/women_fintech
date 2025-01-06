@@ -1,5 +1,8 @@
 <?php
-include_once "config/database.php";
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+include_once "../config/database.php";
 
 $database = new Database();
 $conn = $database->getConnection();
