@@ -18,6 +18,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="members/list_members.php">Members</a></li>
                     <li class="nav-item"><a class="nav-link" href="events/list_events.php">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="registrations/list_registrations.php">Registrations</a></li>
                 </ul>
             </div>
         </div>
