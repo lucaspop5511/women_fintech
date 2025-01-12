@@ -1,29 +1,43 @@
 <?php
 include_once "../../config/database.php";
+include_once "../../includes/header.php";
 
 $database = new Database();
-$conn = $database->getConnection();
+$db = $database->getConnection();
 
-$query = "SELECT * FROM members";
-$stmt = $conn->prepare($query);
+$query = "SELECT * FROM members ORDER BY created_at DESC";
+$stmt = $db->prepare($query);
 $stmt->execute();
+?>
 
-echo "<h1>Lista Membrilor</h1>";
-echo "<table border='1'>";
-echo "<tr><th>ID</th><th>Prenume</th><th>Nume</th><th>Email</th><th>Profesie</th><th>Companie</th><th>LinkedIn</th><th>Status</th><th>Creat la</th></tr>";
+<h2>Members Directory</h2>
 
-while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    echo "<tr>";
-    echo "<td>{$row['id']}</td>";
-    echo "<td>{$row['first_name']}</td>";
-    echo "<td>{$row['last_name']}</td>";
-    echo "<td>{$row['email']}</td>";
-    echo "<td>{$row['profession']}</td>";
-    echo "<td>{$row['company']}</td>";
-    echo "<td><a href='{$row['linkedin_profile']}' target='_blank'>LinkedIn</a></td>";
-    echo "<td>{$row['status']}</td>";
-    echo "<td>{$row['created_at']}</td>";
-    echo "</tr>";
-}
-echo "</table>";
+<div class="row">
+    <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
+        <div class="col-md-4">
+            <div class="card member-card">
+                <div class="card-body">
+                    <h5 class="card-title"><?php echo htmlspecialchars($row['first_name'] . ' ' . $row['last_name']); ?></h5>
+                    <p class="card-text">
+                        <strong>Profession:</strong> <?php echo htmlspecialchars($row['profession']); ?><br>
+                        <strong>Company:</strong> <?php echo htmlspecialchars($row['company']); ?>
+                    </p>
+
+                    <!-- Link pentru editare -->
+                    <a href="edit_member.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">Edit</a>
+                    
+                    <!-- Link pentru ștergere -->
+                    <a href="delete_member.php?id=<?php echo $row['id']; ?>" 
+                       class="btn btn-danger" 
+                       onclick="return confirm('Are you sure you want to delete this member?')">
+                       Delete
+                    </a>
+                </div>
+            </div>
+        </div>
+    <?php endwhile; ?>
+</div>
+
+<?php
+include_once "../../includes/footer.php";
 ?>

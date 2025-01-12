@@ -1,0 +1,52 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    flex: 1;
+}
+
+.footer {
+    margin-top: auto;
+    background-color: #f8f9fa;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.member-card {
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.member-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.navbar.dark-mode {
+    background-color: #1f1f1f !important;
+}
+
+.member-card.dark-mode {
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+    border: 1px solid #333;
+}
+
+#darkModeIcon {
+    transition: transform 0.3s;
+}
+
+body.dark-mode #darkModeIcon {
+    transform: rotate(180deg);
+}
