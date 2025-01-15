@@ -7,8 +7,9 @@ $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/women_fintech/public";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Women in FinTech</title>
-    <link rel="stylesheet" href="<?php echo $base_url; ?>/../assets/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo $base_url; ?>/../assets/css/style.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -27,8 +28,9 @@ $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/women_fintech/public";
                     </li>
                 </ul>
                 <button id="darkModeToggle" class="btn btn-secondary ml-auto" title="Toggle Dark Mode">
-                    <span id="darkModeIcon" class="material-icons">dark_mode</span>
+                    <span id="darkModeIcon" class="material-icons">light_mode</span>
                 </button>
+
             </div>
         </div>
     </nav>

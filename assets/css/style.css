@@ -28,25 +28,53 @@ body {
 }
 
 /* Dark Mode */
+/* Body and text */
 body.dark-mode {
-    background-color: #121212;
-    color: #e0e0e0;
+    background-color: #121212 !important;
+    color: #e0e0e0 !important;
 }
 
-.navbar.dark-mode {
+/* Navbar */
+body.dark-mode .navbar {
     background-color: #1f1f1f !important;
+    color: #e0e0e0 !important;
 }
 
-.member-card.dark-mode {
-    background-color: #1f1f1f;
-    color: #e0e0e0;
-    border: 1px solid #333;
+/* Footer */
+body.dark-mode .footer {
+    background-color: #1f1f1f !important;
+    color: #e0e0e0 !important;
+}
+
+/* Buttons */
+body.dark-mode .btn-primary,
+body.dark-mode .btn-danger {
+    background-color: #333 !important;
+    color: #e0e0e0 !important;
+    border-color: #555 !important;
+}
+
+body.dark-mode .btn-primary:hover,
+body.dark-mode .btn-danger:hover {
+    background-color: #555 !important;
+    border-color: #777 !important;
+}
+
+/* Member Cards */
+body.dark-mode .member-card {
+    background-color: #1f1f1f !important;
+    color: #e0e0e0 !important;
+    border: 1px solid #333 !important;
 }
 
 #darkModeIcon {
     transition: transform 0.3s;
+    font-size: 1.5rem; /* Adjust size as needed */
+    vertical-align: middle;
+    cursor: pointer;
 }
 
 body.dark-mode #darkModeIcon {
     transform: rotate(180deg);
+    content: "dark_mode";
 }

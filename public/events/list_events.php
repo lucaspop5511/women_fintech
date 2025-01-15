@@ -1,30 +1,35 @@
 <?php
-
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
 include_once "../../config/database.php";
+include_once "../../includes/header.php";
 
 $database = new Database();
-$conn = $database->getConnection();
+$db = $database->getConnection();
 
-$query = "SELECT * FROM events";
-$stmt = $conn->prepare($query);
+$query = "SELECT * FROM events ORDER BY date ASC";
+$stmt = $db->prepare($query);
 $stmt->execute();
+?>
 
-echo "<h1>Lista Evenimentelor</h1>";
-echo "<table border='1'>";
-echo "<tr><th>ID</th><th>Titlu</th><th>Descriere</th><th>Data</th><th>Locație</th><th>Creat la</th></tr>";
+<div class="container">
+    <h2>Events</h2>
+    <div class="row">
+        <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
+            <div class="col-md-4">
+                <div class="card member-card">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo htmlspecialchars($row['name']); ?></h5>
+                        <p class="card-text">
+                            <strong>Date:</strong> <?php echo htmlspecialchars($row['date']); ?><br>
+                            <strong>Location:</strong> <?php echo htmlspecialchars($row['location']); ?><br>
+                            <strong>Description:</strong> <?php echo htmlspecialchars($row['description']); ?>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        <?php endwhile; ?>
+    </div>
+</div>
 
-while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    echo "<tr>";
-    echo "<td>{$row['id']}</td>";
-    echo "<td>{$row['title']}</td>";
-    echo "<td>{$row['description']}</td>";
-    echo "<td>{$row['date']}</td>";
-    echo "<td>{$row['location']}</td>";
-    echo "<td>{$row['created_at']}</td>";
-    echo "</tr>";
-}
-echo "</table>";
+<?php
+include_once "../../includes/footer.php";
 ?>
